@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha com Perguntas</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<h2>Jogo da Velha com Perguntas</h2>
+
+<div id="playerForm">
+    <label for="player1">Jogador 1:</label>
+    <input type="text" id="player1" placeholder="Nome do Jogador 1">
+    <br>
+    <label for="player2">Jogador 2:</label>
+    <input type="text" id="player2" placeholder="Nome do Jogador 2">
+    <br>
+    <button onclick="startGame()">Iniciar Jogo</button>
+</div>
+
+<div id="messagebox"></div>
+<div id="board" style="display: none;"></div>
+<div id="questionBox" style="display: none;"></div>
+
+<script src="./js/script.js"></script>
+
+</body>
+</html>

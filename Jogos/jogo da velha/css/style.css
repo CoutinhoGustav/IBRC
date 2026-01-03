@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#playerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#playerForm label {
+    font-size: 18px;
+    margin: 10px 0 5px 0;
+    color: #333;
+}
+
+#playerForm input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#messagebox {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.cell {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+    text-align: center;
+    line-height: 150px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.05);
+}
+
+#questionBox {
+    display: none;
+    margin: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#questionBox p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#questionBox button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#questionBox button:hover {
+    background-color: #005f7f;
+}
+
+/* Estilização para dispositivos móveis */
+@media (max-width: 768px) {
+    #board {
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 10px;
+    }
+
+    .cell {
+        width: 100px;
+        height: 100px;
+        font-size: 36px;
+        line-height: 100px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    #playerForm input {
+        width: 200px;
+    }
+}
+
+@media (max-width: 500px) {
+    #board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+        line-height: 80px;
+    }
+}
