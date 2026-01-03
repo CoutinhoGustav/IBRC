@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./ico/ibrc.ico" type="image/x-ico">
+    <link rel="stylesheet" href="./CSS/Urna.css">
+    
+    <title>Urna IBRC</title>
+</head>
+<body>
+<header>
+    
+    <div class="logo">
+        <img src="./ico/ibrc.ico" alt="Logo IBRC">
+    </div>
+</header>
+<section>
+    <div class="container">
+        <h2>Urna IBRC</h2>
+        <div id="etapa"></div>
+        <div id="opcoes"></div>
+        <button id="votarBrancoBtn" onclick="abrirModalBranco()">Branco</button>
+        <button id="confirmarBtn" onclick="abrirModal()">Confirmar</button>
+        
+    </div>
+</section>
+
+<!-- Modal de Confirmação -->
+<div id="ConfirmarcaoModal" class="modal">
+  <div class="modal-content">
+    <p id="confirmacaoMensagem"></p>
+    <p>Por favor, revise sua escolha antes de confirmar.</p>
+    <button onclick="confirmarVoto()">Confirmar</button>
+    <button onclick="fecharModal()">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal de Finalização -->
+<div id="finalizacaoModal" style="display:none;" class="modal">
+  <div class="modal-content">
+    <h3>Voto Finalizado!</h3>
+    <p>Sua votação foi registrada com sucesso. <br><br>A IBRC agradeçe a sua participação na votação. </p>
+    <button id="fecharModalFinalizacao">Fechar</button>
+  </div>
+</div>
+
+
+<script src="./JS/script.js"></script>
+</body>
+</html>

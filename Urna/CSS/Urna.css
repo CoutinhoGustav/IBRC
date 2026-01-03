@@ -1,0 +1,173 @@
+/* Definição de variáveis de cor para uso no CSS */
+:root { 
+  --primaryColor: #42000B; /* Cor primária */
+  --secondaryColor: #C5A57D; /* Cor secundária */
+  --mainTxtColor: #FFF; /* Cor do texto principal */
+  --heroContentSpanColor: #42000B; /* Cor do conteúdo em destaque */
+  --btnTxtColor: #42000B;
+  --brancoBtn: #e7e7e7; /* Cor do texto dos botões */
+}
+
+/* Estilo básico do corpo da página */
+body { 
+  font-family: 'Merriweather', serif; /* Fonte utilizada no corpo */
+  background-color: var(--secondaryColor); /* Cor de fundo do corpo */
+  color: var(--mainTxtColor); /* Cor do texto no corpo */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimento padrão */
+} 
+
+/* Container principal que envolve o conteúdo */
+.container { 
+  margin: -24vw 0vw 0vw 0vw; /* Margens negativas para ajustar a largura do container */
+  background-color: var(--secondaryColor); /* Cor de fundo do container */
+}
+
+/* Estilo do cabeçalho, com regras à esquerda e logo à direita */
+header {
+  display: flex; /* Usando flexbox para layout */
+  justify-content: space-between; /* Espaçamento entre os itens */
+  align-items: center; /* Alinhamento vertical dos itens */
+  background-color: var(--secondaryColor); /* Cor de fundo do cabeçalho */
+  padding: 59px 6px; /* Preenchimento interno do cabeçalho */
+  color: var(--mainTxtColor); /* Cor do texto no cabeçalho */
+}
+
+
+
+/* Estilo da imagem do logo */
+.logo img {
+  width: 19vw; /* Largura da imagem do logo */
+  height: auto; /* Altura automática para manter proporções */
+  margin: 0vw 0vw -12vw 77vw; /* Margens para posicionamento da imagem */
+}
+
+/* Estilo para o título */
+h2 { 
+  color: var(--primaryColor);
+  font-size: 4.25vw;
+  text-align: center;
+  margin: -14vw 0vw 2vw -1vw;
+}
+
+/* Estilo para o elemento de etapa */
+#etapa { 
+  font-size: 2.5vw;
+    margin: -3vw 1vw 0vw 0vw;
+    text-align: center;
+    color: black;
+}
+
+/* Estilo para as opções de seleção */
+#opcoes { 
+  text-align: center; /* Centraliza as opções */
+  display: contents; /* Faz com que o elemento não crie uma nova caixa de bloco */
+  font-size: 3vw; /* Tamanho da fonte das opções */
+}
+
+/* Estilo para os rótulos das opções */
+#opcoes label {
+  font-size: 3vw;
+  margin-left: 10px;
+  margin: 21vw 0vw 0vw 1vw;
+  color: black;
+}
+
+/* Estilo para as caixas de seleção */
+input[type="checkbox"] { 
+  transform: scale(4.5); /* Aumenta o tamanho da caixa de seleção */
+  margin: 0vw 2vw 3vw 42vw; /* Margens para posicionamento */
+  cursor: pointer; /* Cursor muda para ponteiro ao passar sobre a caixa */
+  accent-color: var(--primaryColor); /* Cor da caixa de seleção */
+}
+
+/* Estilo para os botões */
+button { 
+  padding: 11px 20px; /* Preenchimento interno do botão */
+  background-color: var(--primaryColor); /* Cor de fundo do botão */
+  color: var(--mainTxtColor); /* Cor do texto do botão */
+  border: none; /* Remove borda padrão */
+  border-radius: 5px; /* Arredonda as bordas do botão */
+  font-size: 2vw; /* Tamanho da fonte do botão */
+  cursor: pointer; /* Cursor muda para ponteiro ao passar sobre o botão */
+  margin: -5vw -34vw -18vw 38vw; /* Margens para posicionamento do botão */
+}
+
+/* Estilo do botão ao passar o mouse */
+button:hover { 
+  background-color: var(--mainTxtColor); /* Muda a cor de fundo ao passar o mouse */
+  color: var(--primaryColor); /* Muda a cor do texto ao passar o mouse */
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+
+}
+
+/* Estilo específico para o botão Branco */
+#votarBrancoBtn {
+  background-color: var(--brancoBtn); /* Define a cor de fundo como branco */
+  color: var(--primaryColor); /* Define a cor do texto como a cor primária */
+}
+
+#votarBrancoBtn:hover {
+  background-color: var(--primaryColor); /* Muda a cor de fundo ao passar o mouse */
+  color: #FFF; /* Muda a cor do texto para branco */
+  transition: background-color 0.3s, color 0.3s, border 0.3s; /* Suaviza a transição */
+}
+
+/* Estilo para o modal de confirmação */
+.modal {
+  font-size: 2vw; /* Tamanho da fonte no modal */
+  display: none; /* Oculto por padrão */
+  position: fixed; /* Fica em cima da tela */
+  z-index: 1; /* Fica na frente dos outros elementos */
+  left: 0; /* Alinhamento à esquerda */
+  top: 0; /* Alinhamento ao topo */
+  width: 100%; /* Largura total da tela */
+  height: 100%; /* Altura total da tela */
+  overflow: hidden; /* Habilita rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro com opacidade */
+  color: black; /* Cor do texto dentro do modal */
+  
+
+}
+
+/* Estilo do conteúdo do modal */
+.modal-content {
+  background-color: var(--secondaryColor); /* Cor de fundo do conteúdo do modal */
+  margin: 6% auto; /* Margens automáticas para centralização */
+  padding: 20px; /* Preenchimento interno do conteúdo do modal */
+  border: 6px solid var(--btnTxtColor); /* Borda do conteúdo do modal */
+  border-radius: 11px; /* Arredonda as bordas do conteúdo do modal */
+  width: 80%; /* Largura do conteúdo do modal */
+  max-width: 500px; /* Largura máxima do conteúdo do modal */
+  text-align: center; /* Centraliza o texto dentro do modal */
+}
+
+/* Estilos para os botões dentro do modal de confirmação */
+.modal-content button {
+  display: inline; /* Faz os botões ocuparem toda a largura disponível */
+  margin: 10px auto; /* Centraliza os botões e adiciona espaço em cima e embaixo */
+  padding: 10px 20px; /* Adiciona espaçamento interno aos botões */
+  font-size: 25px; /* Tamanho da fonte dos botões */
+  cursor: pointer; /* Muda o cursor ao passar sobre os botões */
+  background-color: var(--btnTxtColor); /* Cor de fundo do botão */
+  color: var(--mainTxtColor); /* Cor do texto do botão */
+  border: none; /* Remove borda padrão */
+  border-radius: 5px; /* Arredonda as bordas dos botões */
+  transition: background-color 0.3s; /* Efeito de transição para a cor de fundo */
+}
+
+/* Estilo do botão no modal ao passar o mouse */
+.modal-content button:hover {
+  background-color: #FFF; /* Muda a cor de fundo ao passar o mouse */
+  color: #42000B; /* Muda a cor do texto ao passar o mouse */
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 28px;
+}
+
+ 

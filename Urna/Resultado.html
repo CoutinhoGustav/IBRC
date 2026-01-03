@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="ico/biblia.ico" type="image/x-ico">
+<title>Resultado da Votação</title>
+
+<link rel="stylesheet" href="./CSS/style.css">
+</head>
+
+<body>
+<div class="card-container" id="resultadoContainer"></div>
+
+<div class="button-area">
+  <button onclick="gerarPDF()">Gerar PDF</button>
+  <button onclick="voltarParaUrna()">Voltar para a Urna</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<script>
+function carregarResultado() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const votosEncoded = urlParams.get('votos');
+  if (!votosEncoded) return;
+  
+  const votos = JSON.parse(decodeURIComponent(votosEncoded));
+  const resultadoContainer = document.getElementById('resultadoContainer');
+
+  for (const etapaNome in votos) {
+    const etapaResultados = votos[etapaNome];
+
+    // Criar card
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const etapaHeader = document.createElement('h3');
+    etapaHeader.textContent = etapaNome;
+    card.appendChild(etapaHeader);
+
+    const listaResultados = document.createElement('ul');
+    for (const candidato in etapaResultados) {
+      const resultadoItem = document.createElement('li');
+      resultadoItem.textContent = candidato ? `${candidato}: ${etapaResultados[candidato]} votos` : `Branco: ${etapaResultados[candidato]} votos`;
+      listaResultados.appendChild(resultadoItem);
+    }
+
+    card.appendChild(listaResultados);
+    resultadoContainer.appendChild(card);
+  }
+}
+
+function gerarPDF() {
+  const doc = new jsPDF();
+  const resultadoContainer = document.getElementById('resultadoContainer');
+  doc.fromHTML(resultadoContainer.innerHTML, 15, 15);
+  doc.save('resultado_votacao.pdf');
+}
+
+function voltarParaUrna() {
+  window.location.href = 'urna.html';
+}
+
+// Carregar resultados ao abrir
+carregarResultado();
+</script>
+</body>
+</html>
