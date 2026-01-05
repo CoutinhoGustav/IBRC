@@ -1,50 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-:root {
-  /* colors */
-  --primaryColor: #98c2d3;
-  --secondaryColor: #151515;
-  --mainTxtColor: #f0f0f0;
-  --heroContentSpanColor: #69787e;
-  --btnTxtColor: #f0f0f0;
-  --socialIconColor: #69787e;
-  --cardBgColor: #151515;
-  --cardContainer: #7ab6ce;
-  --shadowColor: rgba(0, 0, 0, 0.15);
-
-  /* texts */
-  --fs-header: 24px;
-  --fs-hero-header: 36px;
-  --fs-hero-body: 20px;
-  --fs-hero-btn: 20px;
-  --fw-header: 700;
-  --fw-hero-header: 700;
-  --fw-hero-body: 400;
-  --fw-hero-btn: 700;
-}
-
-.dark-theme {
-  /* colors */
-  --primaryColor: #13163a; /* Adjusted for a medical feel, can be changed */
-  --secondaryColor: #98c2d3; /* Adjusted for a medical feel, can be changed */
-  --mainTxtColor: #f0f0f0;
-  --heroContentSpanColor: #151515;
-  --socialIconColor: #98c2d3;
-  --cardContainer: #7ab6ce;
-  --cardBgColor: #2c2c2c; /* Darker card background */
-  --shadowColor: rgba(255, 255, 255, 0.1); /* Lighter shadow for dark theme */
-
-  /* texts */
-  --fs-header: 24px;
-  --fs-hero-header: 36px;
-  --fs-hero-body: 20px;
-  --fs-hero-btn: 20px;
-  --fw-header: 700;
-  --fw-hero-header: 700;
-  --fw-hero-body: 400;
-  --fw-hero-btn: 700;
-}
 
 * {
   margin: 0;
@@ -166,6 +120,7 @@ a {
   cursor: pointer;
   color: var(--mainTxtColor);
   animation: navbar 1s ease forwards;
+  margin: 0px 0 5px 200px;
 }
 
 /* mobile navigation icon */

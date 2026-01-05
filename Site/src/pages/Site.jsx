@@ -50,24 +50,7 @@ export default function Site() {
               <FontAwesomeIcon icon={darkTheme ? faSun : faMoon} />
             </div>
 
-            {/* Ícones redes sociais */}
-            <div className="social-icons">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faInstagram} />
-              </a>
-
-              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faSpotify} />
-              </a>
-
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faYoutube} />
-              </a>
-
-              <a href="https://wa.me/5599999999999" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faWhatsapp} />
-              </a>
-            </div>
+            
 
           </div>
         </nav>
@@ -88,6 +71,25 @@ export default function Site() {
           </div>
         </div>
 
+        {/* Ícones redes sociais */}
+            <div className="social-icons">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+
+              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faSpotify} />
+              </a>
+
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faYoutube} />
+              </a>
+
+              <a href="https://wa.me/5599999999999" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faWhatsapp} />
+              </a>
+            </div>
+            
         <div className="hero-image">
           <img
             src="https://raw.githubusercontent.com/CoutinhoGustav/pc3/main/src/assets/img/ImagemExemploConsultorio.jpg"
