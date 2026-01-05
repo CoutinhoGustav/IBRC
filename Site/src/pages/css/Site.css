@@ -133,7 +133,7 @@ body {
   color: var(--mainTxtColor);
   cursor: pointer;
   transition: 0.3s ease;
-  margin: 0px 0 5px 200px;
+  margin: 0px 50px 5px 100px;
 }
 
 .theme-change:hover {
