@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --primaryColor: #42000B;
+  --secondaryColor: #C5A57D;
+  --mainTxtColor: #FFF;
+  --btnTxtColor: #42000B;
+  --brancoBtn: #e7e7e7;
+}
+
+@theme inline {
+  --color-primary: var(--primaryColor);
+  --color-secondary: var(--secondaryColor);
+  --color-mainTxt: var(--mainTxtColor);
+  --color-btnTxt: var(--btnTxtColor);
+  --color-brancoBtn: var(--brancoBtn);
+}
+
+body {
+  background-color: var(--secondaryColor);
+  color: var(--mainTxtColor);
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  padding: 0;
+}
