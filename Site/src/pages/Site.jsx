@@ -4,7 +4,7 @@ import './css/Site.css';
 
 // FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMapLocation, faMapSigns, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faSpotify, faYoutube, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 export default function Site() {
@@ -73,23 +73,23 @@ export default function Site() {
 
         {/* Ícones redes sociais */}
             <div className="social-icons">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/ibrc_df/"  rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
 
-              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://spotify.com" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faSpotify} />
               </a>
 
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faYoutube} />
+              <a href="https://maps.app.goo.gl/JNHt437mhEjWZKAK7"  rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faMapLocation} />
               </a>
 
-              <a href="https://wa.me/5599999999999" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5599999999999"  rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faWhatsapp} />
               </a>
             </div>
-            
+
         <div className="hero-image">
           <img
             src="https://raw.githubusercontent.com/CoutinhoGustav/pc3/main/src/assets/img/ImagemExemploConsultorio.jpg"

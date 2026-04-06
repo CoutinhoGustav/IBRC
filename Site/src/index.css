@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #C5A57D;
+  --secondary: #42000B;
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (min-width: 1024px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-['Poppins'] bg-white dark:bg-[#42000B] text-gray-900 dark:text-white transition-colors duration-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-secondary dark:bg-primary text-primary dark:text-secondary font-bold py-3 px-8 rounded-[20px] transition-all transform hover:-translate-y-1 shadow-btn;
+  }
+
+
+  .section-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-14 py-12 md:py-40 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden;
+  }
 }
