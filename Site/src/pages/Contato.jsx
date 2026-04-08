@@ -56,10 +56,10 @@ const Contato = () => {
                             rel="noopener noreferrer"
                             className="group relative w-full flex items-center justify-center gap-4 py-4 px-8 bg-white dark:bg-secondary/20 border-2 border-transparent hover:border-[#C5A57D]/50 rounded-[20px] shadow-lg hover:shadow-[#C5A57D]/20 transition-all duration-300 transform hover:-translate-y-1"
                         >
-                            <div className="absolute left-6 text-gray-400 group-hover:text-[#C5A57D] transition-colors duration-300">
+                            <div className="absolute left-6 text-white-400 group-hover:text-[#C5A57D] transition-colors duration-300">
                                 {social.icon}
                             </div>
-                            <span className="text-xl font-bold text-gray-800 dark:text-white group-hover:text-[#C5A57D] transition-colors duration-300">
+                            <span className="text-xl font-bold text-white-800 dark:text-white group-hover:text-[#C5A57D] transition-colors duration-300">
                                 {social.name}
                             </span>
                         </a>
