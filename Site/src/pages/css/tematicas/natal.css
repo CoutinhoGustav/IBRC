@@ -1,0 +1,34 @@
+/* natal.css - Tema de Natal */
+body.tema-natal {
+    background-color: #fceceb; /* tom avermelhado muito claro */
+}
+body.tema-natal.dark {
+    background-color: #2a0b0b; /* tom escuro avermelhado */
+}
+
+/* Exemplo de animação de neve */
+@keyframes fall {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+}
+
+.tema-natal .snow {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    animation: fall 5s linear infinite;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Adicionamos detalhes em vermelho e verde ao Navbar ou Footer se desejado */
+.tema-natal .text-primary {
+    color: #cc0000;
+}
+.tema-natal .bg-primary {
+    background-color: #cc0000;
+}

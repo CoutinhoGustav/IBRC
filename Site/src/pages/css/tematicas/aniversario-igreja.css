@@ -1,0 +1,30 @@
+/* aniversario-igreja.css - Aniversário da Igreja */
+body.tema-aniversario {
+    background-color: #f0f4ff; /* azul bem sutil */
+}
+body.tema-aniversario.dark {
+    background-color: #0d1326; /* azul escuro profundo */
+}
+
+/* Animação de confetes / balões pode ser adicionada aqui */
+@keyframes float-up {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.tema-aniversario .confetti {
+    position: fixed;
+    width: 10px;
+    height: 20px;
+    background-color: #1d4ed8;
+    animation: float-up 4s linear infinite;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.tema-aniversario .text-primary {
+    color: #2563eb;
+}
+.tema-aniversario .bg-primary {
+    background-color: #2563eb;
+}

@@ -82,6 +82,44 @@ const QuemSomos = () => {
                     <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary opacity-10 blur-3xl rounded-full -z-10"></div>
                 </div>
             </section>
+
+            {/* Our Beliefs Section */}
+            <section className="bg-gray-50 dark:bg-secondary/40 py-16 md:py-24 transition-colors duration-300">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16 animate-hero-content">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                            No que <span className="text-secondary dark:text-primary">Cremos</span>
+                        </h2>
+                        <p className="text-lg opacity-80 max-w-2xl mx-auto">
+                            Nossa fé está alicerçada nos princípios bíblicos fundamentais que norteiam nossas ações e nossa comunidade.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Belief Card 1 */}
+                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300">
+                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Na Bíblia</h3>
+                            <p className="opacity-80 text-justify">
+                                Cremos que a Bíblia é a Palavra de Deus, inspirada, inerrante e a única regra infalível de fé e prática para todos os cristãos.
+                            </p>
+                        </div>
+                        {/* Belief Card 2 */}
+                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300 delay-100">
+                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Em Jesus Cristo</h3>
+                            <p className="opacity-80 text-justify">
+                                Cremos que Jesus Cristo é o Filho de Deus, que morreu por nossos pecados e ressuscitou para nossa justificação e salvação de todo aquele que crê.
+                            </p>
+                        </div>
+                        {/* Belief Card 3 */}
+                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300 delay-200">
+                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Na Igreja</h3>
+                            <p className="opacity-80 text-justify">
+                                Cremos que a Igreja é o corpo de Cristo atuando no mundo, com a missão de fazer discípulos em todas as nações e testemunhar o Seu amor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

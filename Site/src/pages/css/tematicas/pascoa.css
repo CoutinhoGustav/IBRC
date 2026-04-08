@@ -1,0 +1,26 @@
+/* pascoa.css - Tema de Páscoa */
+body.tema-pascoa {
+    background-color: #fef9e7; /* amarelo/creme claro, tom aconchegante */
+}
+body.tema-pascoa.dark {
+    background-color: #2b2210; /* tom escuro quente */
+}
+
+/* Modificamos levemente a cor principal para remeter a renovação */
+.tema-pascoa .text-primary {
+    color: #d4a373;
+}
+.tema-pascoa .bg-primary {
+    background-color: #d4a373;
+}
+
+/* Animação suave para elementos na tela */
+@keyframes float-pascoa {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.tema-pascoa .float-element {
+    animation: float-pascoa 3s ease-in-out infinite;
+}

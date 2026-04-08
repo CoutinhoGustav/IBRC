@@ -26,9 +26,10 @@ const Home = () => {
                         Sejam Bem-Vindos à <span className="text-secondary dark:text-primary">IBRC!</span>
                     </h1>
                     <p className="text-lg md:text-xl mb-8 md:ml-3 leading-relaxed text-justify opacity-90 max-w-xl">
-                        Somos a Igreja Batista Regular do Calvário do Distrito Federal. Uma comunidade dedicada ao ensino fiel das Escrituras e à comunhão mútua.
+                        Somos a Igreja Batista Regular do Calvário do Distrito Federal. Uma família da fé comprometida com a sã doutrina, o ensino expositivo das Escrituras e o fortalecimento mútuo em amor. Junte-se a nós para exaltar a Deus!
                         <br /><br />
-                        Programações: Quartas-Feiras às 20H, Sextas-Feiras às 19H30 e Domingo às 9H30 e 19H.
+                        <strong>Nossos Encontros:</strong><br />
+                        <span className="inline-block mt-2">Quartas às 20h • Sextas às 19h30<br/>Domingos às 9h30 e 19h</span>
                     </p>
                     <div className="flex justify-center md:justify-start md:ml-3">
                         <button className="btn-primary px-10 py-4 text-xl">
