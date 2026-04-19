@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ETAPAS } from '@/constants/etapas';
 import Modal from '@/components/Modal';
+import Header from '@/components/Header';
 
 // Define types for votes
 type VotoEtapa = {
@@ -110,13 +110,26 @@ export default function Urna() {
     router.push(`/resultado?votos=${encodeURIComponent(resultadoStr)}`);
   }, [votos, router]);
 
-  // Restart
+  // Load total votes on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('votos');
+    if (saved) {
+      try {
+        setVotos(JSON.parse(saved));
+      } catch (e) {
+        console.error('Erro ao carregar votos do localStorage', e);
+      }
+    }
+  }, []);
+
+  // Restart session for next voter
   const reiniciar = () => {
     setModalFinalizacaoOpen(false);
     setEtapaAtualIndex(0);
-    setVotos({});
     setOpcoesSelecionadas([]);
-    localStorage.removeItem('votos');
+    setVotoEmBranco(false);
+    // REMOVED: setVotos({}) - we want to keep accumulating
+    // REMOVED: localStorage.removeItem('votos') - we want to keep accumulating
   };
 
   // Keyboard shortcuts
@@ -161,22 +174,14 @@ export default function Urna() {
   // Actually, to avoid stale closures in event listener, simple deps are best.
 
   return (
-    <div className="min-h-screen bg-secondary text-mainTxt font-merriweather flex flex-col">
-      {/* Header/Title Section */}
-      <section className="flex-1 container mx-auto px-4 pt-10 flex flex-col items-center justify-center">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-4 md:mb-8">
-          <h1 className="text-4xl md:text-6xl text-primary font-bold text-center">Urna IBRC</h1>
-          <div className="w-16 md:w-24 lg:w-32">
-            <Image src="/ico/ibrc.ico" alt="Logo IBRC" width={160} height={160} className="w-full h-auto drop-shadow-md" />
-          </div>
-        </div>
+    <div className="min-h-[100dvh] bg-secondary text-mainTxt font-merriweather flex flex-col">
+      <Header etapaNome={etapa.nome} />
 
-        <div className="text-2xl md:text-3xl text-black mb-8 font-medium text-center">
-          Cargo: <span className="font-bold">{etapa.nome}</span>
-        </div>
+      {/* Main Content Section */}
+      <section className="flex-1 container mx-auto px-2 sm:px-4 pt-6 sm:pt-10 md:pt-16 pb-28 sm:pb-32 md:pb-8 flex flex-col items-center">
 
-        <div className="w-full max-w-3xl bg-white/5 rounded-2xl p-6 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
-          <div className="flex flex-col gap-4">
+        <div className="w-full max-w-3xl bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
+          <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
             {etapa.candidatos.map((candidato, idx) => {
               const isSelected = opcoesSelecionadas.includes(candidato);
               return (
@@ -184,21 +189,21 @@ export default function Urna() {
                   key={candidato}
                   onClick={() => toggleOpcao(candidato)}
                   className={`
-                                group flex items-center p-4 rounded-xl cursor-pointer transition-all duration-200 border-2
-                                ${isSelected
+                    group flex items-center p-2.5 sm:p-3 md:p-4 rounded-lg sm:rounded-xl cursor-pointer transition-all duration-200 border-2
+                    ${isSelected
                       ? 'bg-primary/10 border-primary shadow-sm'
-                      : 'bg-transparent border-transparent hover:bg-black/5'
+                      : 'bg-transparent border-transparent hover:bg-black/5 active:bg-black/10'
                     }
-                            `}
+                  `}
                 >
                   <div className={`
-                                 w-8 h-8 md:w-10 md:h-10 rounded border-2 flex items-center justify-center mr-4 md:mr-6 transition-colors
-                                 ${isSelected ? 'bg-primary border-primary' : 'bg-white border-primary/50'}
-                             `}>
-                    {isSelected && <div className="w-4 h-4 md:w-6 md:h-6 bg-white rounded-sm" />}
+                    w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded border-2 flex items-center justify-center mr-3 sm:mr-4 md:mr-6 transition-colors flex-shrink-0
+                    ${isSelected ? 'bg-primary border-primary' : 'bg-white border-primary/50'}
+                  `}>
+                    {isSelected && <div className="w-3 h-3 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-white rounded-sm" />}
                   </div>
 
-                  <span className={`text-xl md:text-3xl select-none ${isSelected ? 'text-primary font-bold' : 'text-black'}`}>
+                  <span className={`text-base sm:text-xl md:text-3xl select-none ${isSelected ? 'text-primary font-bold' : 'text-black'}`}>
                     {candidato}
                   </span>
                 </div>
@@ -207,24 +212,43 @@ export default function Urna() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-6 md:gap-12 w-full max-w-2xl justify-center">
+        {/* Desktop buttons — hidden on mobile (shown as sticky bar instead) */}
+        <div className="hidden sm:flex mt-8 md:mt-12 flex-col sm:flex-row gap-4 md:gap-12 w-full max-w-2xl justify-center">
           <button
             onClick={abrirModalBranco}
-            className="flex-1 bg-brancoBtn text-primary px-8 py-4 rounded-xl text-xl md:text-2xl font-bold hover:bg-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="flex-1 bg-brancoBtn text-primary px-8 py-3 md:py-4 rounded-xl text-lg md:text-2xl font-bold hover:bg-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all shadow-md"
           >
             Votar em Branco
           </button>
           <button
             onClick={abrirModalConfirmacao}
-            className="flex-1 bg-primary text-white px-8 py-4 rounded-xl text-xl md:text-2xl font-bold hover:bg-primary/90 hover:shadow-lg hover:scale-105 active:scale-95 transition-all shadow-md"
+            className="flex-1 bg-primary text-white px-8 py-3 md:py-4 rounded-xl text-lg md:text-2xl font-bold hover:bg-primary/90 hover:shadow-lg hover:scale-105 active:scale-95 transition-all shadow-md"
           >
             Confirmar Voto
           </button>
         </div>
       </section>
 
-      {/* Footer spacing if needed */}
-      <div className="h-10"></div>
+      {/* Mobile sticky bottom buttons */}
+      <div className="fixed bottom-0 left-0 right-0 sm:hidden bg-secondary/95 backdrop-blur-md border-t border-black/10 px-3 py-3 flex gap-3 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+      >
+        <button
+          onClick={abrirModalBranco}
+          className="flex-1 bg-brancoBtn text-primary px-3 py-3 rounded-xl text-sm font-bold active:scale-95 transition-all shadow-md"
+        >
+          Votar em Branco
+        </button>
+        <button
+          onClick={abrirModalConfirmacao}
+          className="flex-1 bg-primary text-white px-3 py-3 rounded-xl text-sm font-bold active:scale-95 transition-all shadow-md"
+        >
+          Confirmar Voto
+        </button>
+      </div>
+
+      {/* Footer spacing — only on desktop */}
+      <div className="hidden md:block h-10"></div>
 
       {/* Modals */}
       <Modal

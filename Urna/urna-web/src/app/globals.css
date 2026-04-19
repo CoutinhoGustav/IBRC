@@ -19,6 +19,10 @@
 /* ===============================
    ESTILO GLOBAL (DESKTOP)
 ================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--secondaryColor);
   color: var(--mainTxtColor);
@@ -27,6 +31,8 @@ body {
   padding: 0;
   font-size: 16px;
   line-height: 1.6;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 /* ===============================
@@ -58,7 +64,7 @@ body {
 @media (max-width: 768px) {
   body {
     font-size: 14px;
-    padding: 0 0.8rem;
+    padding: 0 0.5rem;
   }
 
   h1 {
@@ -75,7 +81,7 @@ body {
 
   button {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.7rem;
     font-size: 1rem;
   }
 }
@@ -86,13 +92,37 @@ body {
 @media (max-width: 480px) {
   body {
     font-size: 13.5px;
+    padding: 0 0.25rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* ===============================
+   ANIMAÇÕES MOBILE
+================================ */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   MELHORIA DE TOQUE MOBILE
+================================ */
+@media (pointer: coarse) {
+  button, [role="button"], [onclick] {
+    -webkit-tap-highlight-color: transparent;
   }
 }
