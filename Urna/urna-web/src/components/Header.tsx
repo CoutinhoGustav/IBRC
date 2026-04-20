@@ -12,7 +12,7 @@ export default function Header({ etapaNome }: HeaderProps) {
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
                 {/* Logo & Title Section */}
                 <div className="flex items-center gap-4 group">
-                    <div className="relative w-10 h-10 md:w-16 md:h-16 transition-transform duration-500 group-hover:scale-110">
+                    <div className="relative w-10 h-10 md:w-16 md:h-16 -mt-4 transition-transform duration-500 group-hover:scale-110">
                         <div className="absolute inset-0 bg-secondary rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity"></div>
                         <Image
                             src="/ico/ibrc.ico"
@@ -22,7 +22,7 @@ export default function Header({ etapaNome }: HeaderProps) {
                             className="relative w-full h-auto drop-shadow-lg"
                         />
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-center text-center">
                         <h1 className="text-xl md:text-3xl text-white md:text-primary font-black tracking-tighter leading-none">
                             Urna IBRC
                         </h1>
