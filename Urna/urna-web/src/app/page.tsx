@@ -183,9 +183,9 @@ export default function Urna() {
       <Header etapaNome={etapa.nome} />
 
       {/* Main Content Section */}
-      <section className="flex-1 container mx-auto px-2 sm:px-4 pt-2 sm:pt-4 md:pt-8 pb-28 sm:pb-32 md:pb-8 flex flex-col items-center">
+      <section className="flex-1 container mx-auto px-2 sm:px-4 pt-2 sm:pt-4 md:pt-8 pb-28 sm:pb-32 md:pb-8 flex flex-col items-center justify-center sm:justify-start">
 
-        <div className="w-full max-w-3xl bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
+        <div className="w-full max-w-3xl mx-auto mt-6 sm:mt-0 bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
           <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
             {etapa.candidatos.map((candidato, idx) => {
               const isSelected = opcoesSelecionadas.includes(candidato);

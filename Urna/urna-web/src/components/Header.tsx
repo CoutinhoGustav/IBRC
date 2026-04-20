@@ -47,7 +47,7 @@ export default function Header({ etapaNome }: HeaderProps) {
 
                 {/* Cargo Badge - Mobile */}
                 <div className="md:hidden flex flex-col items-end gap-0.5">
-                    <span className="text-white/40 text-[8px] font-bold uppercase tracking-widest leading-none">Etapa</span>
+                    <span className="text-white/40 text-[8px] font-bold uppercase tracking-widest leading-none text-center w-full">Etapa</span>
                     <div className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1">
                         <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shrink-0"></span>
                         <span className="text-white text-[11px] font-bold tracking-tight truncate max-w-[110px]">
