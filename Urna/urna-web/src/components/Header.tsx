@@ -35,7 +35,7 @@ export default function Header({ etapaNome }: HeaderProps) {
                 {/* Cargo Badge - Desktop */}
                 <div className="hidden md:flex items-center gap-6">
                     <div className="h-10 w-[1px] bg-primary/20"></div>
-                    <div className="flex flex-col items-end">
+                    <div className="flex flex-col items-center">
                         <span className="text-[10px] text-primary/40 font-bold uppercase tracking-wider mb-1">Etapa Atual</span>
                         <div className="bg-primary text-secondary px-6 py-2 rounded-full font-bold text-xl shadow-lg border border-secondary/20 flex items-center gap-3">
                             <span className="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>

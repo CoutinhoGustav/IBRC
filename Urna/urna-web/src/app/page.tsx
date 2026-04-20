@@ -21,6 +21,8 @@ export default function Urna() {
   const [modalConfirmacaoOpen, setModalConfirmacaoOpen] = useState(false);
   const [modalBrancoOpen, setModalBrancoOpen] = useState(false);
   const [modalFinalizacaoOpen, setModalFinalizacaoOpen] = useState(false);
+  const [modalAlertaOpen, setModalAlertaOpen] = useState(false);
+  const [mensagemAlerta, setMensagemAlerta] = useState('');
   const [votoEmBranco, setVotoEmBranco] = useState(false);
 
   const etapa = ETAPAS[etapaAtualIndex];
@@ -38,7 +40,8 @@ export default function Urna() {
   const abrirModalConfirmacao = () => {
     const { minCandidatos, maxCandidatos } = etapa;
     if (opcoesSelecionadas.length < minCandidatos || opcoesSelecionadas.length > maxCandidatos) {
-      alert(`ATENÇÃO! Selecione no máximo até ${maxCandidatos} e no mínimo ${minCandidatos}`);
+      setMensagemAlerta(`ATENÇÃO! Selecione no máximo até ${maxCandidatos} e no mínimo ${minCandidatos}`);
+      setModalAlertaOpen(true);
       return;
     }
     setVotoEmBranco(false);
@@ -152,7 +155,9 @@ export default function Urna() {
 
       // Enter for Confirm
       if (key === 'Enter') {
-        if (modalConfirmacaoOpen || modalBrancoOpen) {
+        if (modalAlertaOpen) {
+          setModalAlertaOpen(false);
+        } else if (modalConfirmacaoOpen || modalBrancoOpen) {
           confirmarVoto();
         } else {
           // If nothing open, try to open confirmation
@@ -169,7 +174,7 @@ export default function Urna() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [etapa, modalConfirmacaoOpen, modalBrancoOpen, opcoesSelecionadas, confirmarVoto, verificarResultado, toggleOpcao, abrirModalConfirmacao, abrirModalBranco]);
+  }, [etapa, modalConfirmacaoOpen, modalBrancoOpen, modalAlertaOpen, opcoesSelecionadas, confirmarVoto, verificarResultado, toggleOpcao, abrirModalConfirmacao, abrirModalBranco]);
   // Note: deps are complex here due to closures. Standard React pattern might need refs or reducing deps, but for this scale it's fine if we include everything.
   // Actually, to avoid stale closures in event listener, simple deps are best.
 
@@ -278,6 +283,15 @@ export default function Urna() {
         }
         confirmText="Fechar"
         onConfirm={reiniciar}
+        showCancel={false}
+      />
+
+      <Modal
+        isOpen={modalAlertaOpen}
+        title="⚠️ ATENÇÃO"
+        message={mensagemAlerta}
+        confirmText="Entendi"
+        onConfirm={() => setModalAlertaOpen(false)}
         showCancel={false}
       />
     </div>
