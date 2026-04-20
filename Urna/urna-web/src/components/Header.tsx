@@ -9,10 +9,11 @@ interface HeaderProps {
 export default function Header({ etapaNome }: HeaderProps) {
     return (
         <header className="w-full bg-primary/95 md:bg-white/10 backdrop-blur-md border-b border-black/10 md:border-white/20 px-4 py-3 md:py-6 sticky top-0 z-50 transition-all duration-300">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+            <div className="max-w-7xl mx-auto flex flex-row items-center justify-between">
+
                 {/* Logo & Title Section */}
-                <div className="flex items-center gap-4 group">
-                    <div className="relative w-10 h-10 md:w-16 md:h-16 -mt-4 transition-transform duration-500 group-hover:scale-110">
+                <div className="flex items-center gap-3 md:gap-4 group">
+                    <div className="relative w-9 h-9 md:w-16 md:h-16 md:-mt-4 transition-transform duration-500 group-hover:scale-110 shrink-0">
                         <div className="absolute inset-0 bg-secondary rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity"></div>
                         <Image
                             src="/ico/ibrc.ico"
@@ -22,11 +23,11 @@ export default function Header({ etapaNome }: HeaderProps) {
                             className="relative w-full h-auto drop-shadow-lg"
                         />
                     </div>
-                    <div className="flex flex-col items-center text-center">
-                        <h1 className="text-xl md:text-3xl text-white md:text-primary font-black tracking-tighter leading-none">
+                    <div className="flex flex-col">
+                        <h1 className="text-[15px] md:text-3xl text-white md:text-primary font-black tracking-tight leading-none">
                             Urna IBRC
                         </h1>
-                        <span className="text-[10px] md:text-xs text-secondary md:text-primary/60 font-bold uppercase tracking-[0.2em] mt-1 hidden md:block">
+                        <span className="text-[9px] md:text-xs text-white/50 md:text-primary/60 font-bold uppercase tracking-[0.18em] mt-0.5 md:mt-1">
                             Urna Digital
                         </span>
                     </div>
@@ -44,13 +45,17 @@ export default function Header({ etapaNome }: HeaderProps) {
                     </div>
                 </div>
 
-                {/* Cargo Title - Mobile (Centered) */}
-                <div className="md:hidden text-center">
-                    <span className="text-secondary/80 text-xs font-bold uppercase tracking-widest block mb-1">Cargo</span>
-                    <h2 className="text-white text-xl font-bold tracking-tight">
-                        {etapaNome}
-                    </h2>
+                {/* Cargo Badge - Mobile */}
+                <div className="md:hidden flex flex-col items-end gap-0.5">
+                    <span className="text-white/40 text-[8px] font-bold uppercase tracking-widest leading-none">Etapa</span>
+                    <div className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1">
+                        <span className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse shrink-0"></span>
+                        <span className="text-white text-[11px] font-bold tracking-tight truncate max-w-[110px]">
+                            {etapaNome}
+                        </span>
+                    </div>
                 </div>
+
             </div>
         </header>
     );
