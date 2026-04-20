@@ -185,8 +185,8 @@ export default function Urna() {
       {/* Main Content Section */}
       <section className="flex-1 container mx-auto px-2 sm:px-4 pt-2 sm:pt-4 md:pt-8 pb-28 sm:pb-32 md:pb-8 flex flex-col items-center justify-center sm:justify-start">
 
-        <div className="w-full max-w-3xl mx-auto mt-6 sm:mt-0 bg-white/5 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
-          <div className="flex flex-col gap-3 sm:gap-3 md:gap-4">
+        <div className="w-full max-w-3xl mx-auto mt-6 sm:mt-0 bg-white/5 rounded-xl sm:rounded-2xl p-5 sm:p-8 md:p-10 backdrop-blur-sm border border-black/5 shadow-inner">
+          <div className="flex flex-col gap-3 sm:gap-4 md:gap-4">
             {etapa.candidatos.map((candidato, idx) => {
               const isSelected = opcoesSelecionadas.includes(candidato);
               return (
@@ -194,7 +194,7 @@ export default function Urna() {
                   key={candidato}
                   onClick={() => toggleOpcao(candidato)}
                   className={`
-                    group flex items-center p-4 sm:p-3 md:p-4 rounded-xl sm:rounded-xl cursor-pointer transition-all duration-200 border-2
+                    group flex items-center p-4 sm:p-4 md:p-4 rounded-xl sm:rounded-xl cursor-pointer transition-all duration-200 border-2
                     ${isSelected
                       ? 'bg-primary/10 border-primary shadow-sm'
                       : 'bg-transparent border-transparent hover:bg-black/5 active:bg-black/10'
@@ -202,13 +202,13 @@ export default function Urna() {
                   `}
                 >
                   <div className={`
-                    w-9 h-9 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded border-2 flex items-center justify-center mr-4 sm:mr-4 md:mr-6 transition-colors flex-shrink-0
+                    w-9 h-9 sm:w-10 sm:h-10 md:w-10 md:h-10 rounded border-2 flex items-center justify-center mr-4 sm:mr-5 md:mr-6 transition-colors flex-shrink-0
                     ${isSelected ? 'bg-primary border-primary' : 'bg-white border-primary/50'}
                   `}>
-                    {isSelected && <div className="w-5 h-5 sm:w-4 sm:h-4 md:w-6 md:h-6 bg-white rounded-sm" />}
+                    {isSelected && <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 bg-white rounded-sm" />}
                   </div>
 
-                  <span className={`text-xl sm:text-xl md:text-3xl select-none ${isSelected ? 'text-primary font-bold' : 'text-black'}`}>
+                  <span className={`text-xl sm:text-2xl md:text-3xl select-none ${isSelected ? 'text-primary font-bold' : 'text-black'}`}>
                     {candidato}
                   </span>
                 </div>
