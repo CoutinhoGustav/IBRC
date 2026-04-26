@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ProtectedImage from '../components/ProtectedImage';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const slides = [
         { src: "/img/hero-img.png", alt: "IBRC Vista Exterior" },
-        { src: "/img/slide_1.png", alt: "Nossa Congregação" },
-        { src: "/img/slide 4.jpeg", alt: "Comunidade IBRC" }
+        { src: "/img/slide_1.png", alt: "Nossa Congregacao" },
+        { src: "/img/slide 4.jpeg", alt: "Comunidade IBRC" },
     ];
 
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,67 +13,149 @@ const Home = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 5000);
+        }, 6000);
         return () => clearInterval(timer);
     }, [slides.length]);
 
     return (
-        <div className="min-h-screen transition-colors duration-300">
-            <section className="section-content !items-start !py-12 md:!py-32">
+        <div className="transition-colors duration-500">
+            {/* ── Hero: Full-viewport immersive ── */}
+            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                {/* Background Carousel */}
+                <div className="absolute inset-0">
+                    {slides.map((slide, index) => (
+                        <div
+                            key={index}
+                            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
+                                index === currentSlide
+                                    ? 'opacity-100 scale-100'
+                                    : 'opacity-0 scale-110'
+                            }`}
+                        >
+                            <img
+                                src={slide.src}
+                                alt={slide.alt}
+                                className="w-full h-full object-cover"
+                                draggable={false}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Dark overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
+
+                {/* Decorative corner accents */}
+                <div className="absolute top-24 left-8 md:left-16 w-16 h-16 border-t border-l border-primary/40" />
+                <div className="absolute bottom-24 right-8 md:right-16 w-16 h-16 border-b border-r border-primary/40" />
+
                 {/* Content */}
-                <div className="flex-1 text-center md:text-left animate-hero-content z-10">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6 md:ml-3 leading-tight">
-                        Sejam Bem-Vindos à <span className="text-secondary dark:text-primary">IBRC!</span>
+                <div className="relative z-10 text-center text-white max-w-4xl px-6">
+                    <div className="gold-divider-center mb-8 opacity-0 animate-fade-in-slow" />
+                    <h1 className="font-cinzel text-4xl sm:text-5xl md:text-7xl font-semibold mb-6 tracking-wide opacity-0 animate-fade-up leading-tight">
+                        Sejam Bem-Vindos
                     </h1>
-                    <p className="text-lg md:text-xl mb-8 md:ml-3 leading-relaxed text-justify opacity-90 max-w-xl">
-                        Somos a Igreja Batista Regular do Calvário do Distrito Federal. Uma família da fé comprometida com a sã doutrina, o ensino expositivo das Escrituras e o fortalecimento mútuo em amor. Junte-se a nós para exaltar a Deus!
-                        <br /><br />
-                        <strong>Nossos Encontros:</strong><br />
-                        <span className="inline-block mt-2">Quartas às 20h • Sextas às 19h30<br/>Domingos às 9h30 e 19h</span>
+                    <p className="font-cinzel text-primary text-lg sm:text-xl md:text-2xl tracking-[0.2em] uppercase mb-8 opacity-0 animate-fade-up-delay-1">
+                        Igreja Batista Regular do Calvario
                     </p>
-                    <div className="flex justify-center md:justify-start md:ml-3">
-                        <button className="btn-primary px-10 py-4 text-xl">
-                            Saiba Mais
-                        </button>
+                    <p className="font-outfit text-white/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up-delay-2">
+                        Uma familia da fe comprometida com a sa doutrina, o ensino expositivo
+                        das Escrituras e o fortalecimento mutuo em amor desde 1984.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-up-delay-3">
+                        <Link to="/quem-somos" className="btn-primary">
+                            Conheca Nossa Historia
+                        </Link>
+                        <Link to="/programacoes" className="btn-outline border-white/40 text-white hover:bg-white hover:text-charcoal">
+                            Nossas Programacoes
+                        </Link>
                     </div>
                 </div>
 
-                {/* Hero Carousel */}
-                <div className="flex-1 w-full max-w-xl flex justify-center items-center relative animate-hero-content">
-                    <div className="relative w-full aspect-[4/3] rounded-[30px] overflow-hidden shadow-2xl border-4 border-primary dark:border-secondary">
-                        {slides.map((slide, index) => (
-                            <div
-                                key={index}
-                                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                                    }`}
-                            >
-                                <ProtectedImage
-                                    src={slide.src}
-                                    alt={slide.alt}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        ))}
+                {/* Carousel indicators */}
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+                    {slides.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentSlide(index)}
+                            aria-label={`Slide ${index + 1}`}
+                            className={`h-[2px] rounded-full transition-all duration-700 ${
+                                index === currentSlide
+                                    ? 'bg-primary w-12'
+                                    : 'bg-white/30 w-6 hover:bg-white/60'
+                            }`}
+                        />
+                    ))}
+                </div>
 
-                        {/* Carousel Dots */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                            {slides.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-primary scale-125' : 'bg-white opacity-50'
-                                        }`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Decorative element */}
-                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary opacity-20 blur-3xl rounded-full -z-10 anima-pulse"></div>
+                {/* Scroll hint */}
+                <div className="absolute bottom-28 left-1/2 -translate-x-1/2 animate-scroll-hint">
+                    <svg className="w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7" />
+                    </svg>
                 </div>
             </section>
 
+            {/* ── Welcome Section ── */}
+            <section className="section-padding bg-cream dark:bg-[#18120E] transition-colors duration-500">
+                <div className="section-container">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <div className="gold-divider-center mb-8" />
+                        <h2 className="text-3xl md:text-4xl font-semibold mb-8 leading-snug text-balance">
+                            Uma comunidade de fe e{' '}
+                            <span className="text-primary">esperanca</span>
+                        </h2>
+                        <p className="text-warm-gray dark:text-[#9B8E82] text-lg leading-relaxed mb-12">
+                            Somos a Igreja Batista Regular do Calvario do Distrito Federal, localizada em Ceilandia.
+                            Desde 1984, temos sido um lugar de acolhimento, ensino biblico e comunhao para todas as idades.
+                        </p>
 
+                        {/* Schedule Cards */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                            {[
+                                { day: 'Quarta', time: '20h', label: 'Culto de Oracao' },
+                                { day: 'Sexta', time: '19h30', label: 'Mocidade' },
+                                { day: 'Domingo', time: '9h30', label: 'Escola Biblica' },
+                                { day: 'Domingo', time: '19h', label: 'Culto Evangelistico' },
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="group p-6 bg-white dark:bg-[#241C16] rounded-sm border border-parchment dark:border-[#2E241D] hover:border-primary/40 transition-all duration-300 shadow-card hover:shadow-card-hover"
+                                >
+                                    <p className="font-cinzel text-xs tracking-[0.15em] uppercase text-primary mb-2">
+                                        {item.day}
+                                    </p>
+                                    <p className="font-cinzel text-2xl font-semibold mb-2">
+                                        {item.time}
+                                    </p>
+                                    <p className="font-outfit text-xs text-warm-gray dark:text-[#9B8E82] tracking-wide">
+                                        {item.label}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── CTA Section ── */}
+            <section className="relative py-24 md:py-32 overflow-hidden">
+                <div className="absolute inset-0 bg-secondary dark:bg-[#0F0A08]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+
+                <div className="relative z-10 section-container text-center">
+                    <p className="font-cinzel text-xs tracking-[0.3em] uppercase text-primary mb-6">
+                        Venha nos visitar
+                    </p>
+                    <h2 className="font-cinzel text-3xl md:text-5xl font-semibold text-white mb-8 leading-snug text-balance">
+                        Estamos de bracos abertos para receber voce e sua familia
+                    </h2>
+                    <div className="gold-divider-center mb-10" />
+                    <Link to="/contato" className="btn-primary">
+                        Entre em Contato
+                    </Link>
+                </div>
+            </section>
         </div>
     );
 };

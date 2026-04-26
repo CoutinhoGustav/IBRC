@@ -1,122 +1,143 @@
-import React, { useState, useEffect } from 'react';
-import ProtectedImage from '../components/ProtectedImage';
+import React from 'react';
+import ImageCarousel from '../components/ImageCarousel';
 
 const QuemSomos = () => {
     const slides = [
-        { src: "/img/slide_1.png", alt: "Fundação IBRC" },
-        { src: "/img/slide 4.jpeg", alt: "Nossa História 1" },
-        { src: "/img/WhatsApp Image 2024-06-28 at 15.08.21.jpeg", alt: "Nossa História 2" },
-        { src: "/img/WhatsApp Image 2024-06-28 at 15.08.22.jpeg", alt: "Nossa História 3" },
+        { src: "/img/slide_1.png", alt: "Fundacao IBRC" },
+        { src: "/img/slide 4.jpeg", alt: "Nossa Historia 1" },
+        { src: "/img/WhatsApp Image 2024-06-28 at 15.08.21.jpeg", alt: "Nossa Historia 2" },
+        { src: "/img/WhatsApp Image 2024-06-28 at 15.08.22.jpeg", alt: "Nossa Historia 3" },
     ];
 
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [slides.length]);
+    const beliefs = [
+        {
+            title: "Na Biblia",
+            text: "Cremos que a Biblia e a Palavra de Deus, inspirada, inerrante e a unica regra infalivel de fe e pratica para todos os cristaos.",
+            verse: "2 Timoteo 3:16",
+        },
+        {
+            title: "Em Jesus Cristo",
+            text: "Cremos que Jesus Cristo e o Filho de Deus, que morreu por nossos pecados e ressuscitou para nossa justificacao e salvacao de todo aquele que cre.",
+            verse: "Romanos 10:9",
+        },
+        {
+            title: "Na Igreja",
+            text: "Cremos que a Igreja e o corpo de Cristo atuando no mundo, com a missao de fazer discipulos em todas as nacoes e testemunhar o Seu amor.",
+            verse: "Mateus 28:19",
+        },
+    ];
 
     return (
-        <div className="min-h-screen transition-colors duration-300">
-            <section className="section-content !items-center !pt-16 !pb-20 md:!pt-24 md:!pb-32">
-                {/* Story Content */}
-                <div className="flex-1 animate-hero-content order-2 md:order-1 px-4 lg:px-8">
+        <div className="min-h-screen transition-colors duration-500">
+            {/* Hero Header */}
+            <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-secondary dark:bg-[#0F0A08] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-transparent" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 blur-[120px] rounded-full" />
 
-                    <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-                        Nossa <span className="text-secondary dark:text-primary">História</span>
+                <div className="relative z-10 section-container">
+                    <div className="gold-divider mb-6 opacity-0 animate-fade-up" />
+                    <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4 opacity-0 animate-fade-up-delay-1">
+                        Nossa{' '}
+                        <span className="text-primary">Historia</span>
                     </h1>
-
-                    <div className="text-lg md:text-xl space-y-8 text-justify leading-relaxed opacity-90 max-w-2xl">
-                        <p className="font-medium text-lg leading-relaxed border-l-4 border-primary pl-6">
-                            A Igreja Batista Regular do Calvário do Distrito Federal tem raízes profundas na comunidade de Ceilândia.
-                        </p>
-
-                        <p>
-                            Nossa caminhada começou em meados de 1984, fruto da dedicação e fé do irmão Juraci e sua família. As primeiras reuniões, simples e repletas de propósito, aconteciam nas salas das casas da vizinhança, unindo pessoas em oração e louvor.
-                        </p>
-
-                        <div class="bg-gray-50 dark:bg-secondary/20 p-8 rounded-[30px]  border border-gray-100 border-[#C5A57D] shadow-sm transition-all hover:shadow-md">
-                            <p className="italic font-medium text-secondary dark:text-primary mb-4 text-xl">
-                                "No ano de 1985, recebemos a benção de um terreno para fundarmos nossa sede acadêmica e espiritual."
-                            </p>
-                            <p className="text-sm opacity-70">
-                                Desde então, este local tornou-se um farol de esperança e ensino bíblico, realizando atividades para crianças, jovens e adultos, sempre comprometidos com a Palavra de Deus.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Visual Timeline / Carousel */}
-                <div className="flex-1 w-full max-w-xl flex justify-center items-center relative animate-hero-content order-1 md:order-2 mb-12 md:-mt-12">
-                    <div className="relative w-full aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl border-4 border-primary dark:border-secondary transition-all hover:scale-[1.02] duration-500">
-                        {slides.map((slide, index) => (
-                            <div
-                                key={index}
-                                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
-                                    }`}
-                            >
-                                <ProtectedImage
-                                    src={slide.src}
-                                    alt={slide.alt}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        ))}
-
-                        {/* Carousel Dots */}
-                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-                            {slides.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-primary w-8' : 'bg-white opacity-50 hover:opacity-100'
-                                        }`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Decorative element */}
-                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary opacity-10 blur-3xl rounded-full -z-10"></div>
+                    <p className="text-white/60 text-lg max-w-xl opacity-0 animate-fade-up-delay-2">
+                        Mais de 40 anos de fe, ensino e comunhao em Ceilandia.
+                    </p>
                 </div>
             </section>
 
-            {/* Our Beliefs Section */}
-            <section className="bg-gray-50 dark:bg-secondary/40 py-16 md:py-24 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 animate-hero-content">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            No que <span className="text-secondary dark:text-primary">Cremos</span>
+            {/* Story + Carousel */}
+            <section className="section-padding bg-cream dark:bg-[#18120E] transition-colors duration-500">
+                <div className="section-container">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        {/* Carousel */}
+                        <div className="relative order-1 lg:order-1">
+                            <ImageCarousel
+                                slides={slides}
+                                className="rounded-sm shadow-gold-lg border border-parchment dark:border-[#2E241D]"
+                            />
+                            <div className="absolute -top-6 -left-6 w-32 h-32 border border-primary/20 rounded-sm -z-10" />
+                        </div>
+
+                        {/* Story */}
+                        <div className="order-2 lg:order-2 space-y-8">
+                            <div>
+                                <div className="gold-divider mb-6" />
+                                <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+                                    Uma caminhada de{' '}
+                                    <span className="text-primary">fe</span>
+                                </h2>
+                            </div>
+
+                            <p className="text-warm-gray dark:text-[#9B8E82] text-lg leading-relaxed">
+                                A Igreja Batista Regular do Calvario do Distrito Federal tem raizes
+                                profundas na comunidade de Ceilandia. Nossa caminhada comecou em
+                                meados de 1984, fruto da dedicacao e fe do irmao Juraci e sua familia.
+                            </p>
+
+                            <p className="text-warm-gray dark:text-[#9B8E82] leading-relaxed">
+                                As primeiras reunioes, simples e repletas de proposito, aconteciam
+                                nas salas das casas da vizinhanca, unindo pessoas em oracao e louvor.
+                            </p>
+
+                            {/* Pull Quote */}
+                            <blockquote className="relative p-8 bg-white dark:bg-[#241C16] border-l-[3px] border-primary rounded-sm shadow-card">
+                                <p className="font-cinzel text-lg md:text-xl font-medium leading-relaxed text-secondary dark:text-primary italic">
+                                    "No ano de 1985, recebemos a bencao de um terreno para fundarmos
+                                    nossa sede academica e espiritual."
+                                </p>
+                                <p className="mt-4 text-sm text-warm-gray dark:text-[#9B8E82]">
+                                    Desde entao, este local tornou-se um farol de esperanca e ensino
+                                    biblico, realizando atividades para criancas, jovens e adultos.
+                                </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Beliefs Section */}
+            <section className="section-padding bg-parchment dark:bg-[#1A1410] transition-colors duration-500">
+                <div className="section-container">
+                    <div className="text-center mb-16">
+                        <p className="font-cinzel text-xs tracking-[0.3em] uppercase text-primary mb-4">
+                            Nossos Fundamentos
+                        </p>
+                        <h2 className="text-3xl md:text-5xl font-semibold mb-6">
+                            No que <span className="text-primary">Cremos</span>
                         </h2>
-                        <p className="text-lg opacity-80 max-w-2xl mx-auto">
-                            Nossa fé está alicerçada nos princípios bíblicos fundamentais que norteiam nossas ações e nossa comunidade.
+                        <div className="gold-divider-center mb-6" />
+                        <p className="text-warm-gray dark:text-[#9B8E82] text-lg max-w-2xl mx-auto">
+                            Nossa fe esta alicercada nos principios biblicos fundamentais que
+                            norteiam nossas acoes e nossa comunidade.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Belief Card 1 */}
-                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300">
-                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Na Bíblia</h3>
-                            <p className="opacity-80 text-justify">
-                                Cremos que a Bíblia é a Palavra de Deus, inspirada, inerrante e a única regra infalível de fé e prática para todos os cristãos.
-                            </p>
-                        </div>
-                        {/* Belief Card 2 */}
-                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300 delay-100">
-                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Em Jesus Cristo</h3>
-                            <p className="opacity-80 text-justify">
-                                Cremos que Jesus Cristo é o Filho de Deus, que morreu por nossos pecados e ressuscitou para nossa justificação e salvação de todo aquele que crê.
-                            </p>
-                        </div>
-                        {/* Belief Card 3 */}
-                        <div className="bg-white dark:bg-secondary p-8 rounded-[30px] shadow-lg border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300 delay-200">
-                            <h3 className="text-2xl font-bold mb-4 dark:text-primary">Na Igreja</h3>
-                            <p className="opacity-80 text-justify">
-                                Cremos que a Igreja é o corpo de Cristo atuando no mundo, com a missão de fazer discípulos em todas as nações e testemunhar o Seu amor.
-                            </p>
-                        </div>
+                        {beliefs.map((belief, idx) => (
+                            <div
+                                key={idx}
+                                className="group relative bg-white dark:bg-[#241C16] p-8 rounded-sm border border-parchment dark:border-[#2E241D] shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+                            >
+                                {/* Top accent */}
+                                <div className="absolute top-0 left-8 right-8 h-[2px] bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
+
+                                <div className="pt-4">
+                                    <span className="inline-block font-cinzel text-xs tracking-[0.2em] uppercase text-primary/60 mb-4">
+                                        {String(idx + 1).padStart(2, '0')}
+                                    </span>
+                                    <h3 className="font-cinzel text-xl font-semibold mb-4 group-hover:text-primary transition-colors duration-300">
+                                        {belief.title}
+                                    </h3>
+                                    <p className="text-warm-gray dark:text-[#9B8E82] leading-relaxed mb-6">
+                                        {belief.text}
+                                    </p>
+                                    <p className="font-cinzel text-xs tracking-[0.1em] text-primary/60 italic">
+                                        {belief.verse}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

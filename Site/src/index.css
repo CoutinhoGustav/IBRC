@@ -1,44 +1,129 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary: #C5A57D;
-  --secondary: #42000B;
+  --primary: #B8956A;
+  --primary-dark: #96754A;
+  --secondary: #3A0A12;
+  --cream: #FAF7F2;
+  --parchment: #F3EDE4;
+  --charcoal: #2C2420;
   font-size: 16px;
 }
 
 @media (min-width: 1024px) {
   :root {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 
 @media (min-width: 1536px) {
   :root {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
 @layer base {
   body {
-    @apply font-['Poppins'] bg-white dark:bg-[#42000B] text-gray-900 dark:text-white transition-colors duration-300;
+    @apply font-outfit bg-cream dark:bg-[#18120E] text-charcoal dark:text-[#E8DFD4] transition-colors duration-500;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  ::selection {
+    background-color: #B8956A;
+    color: #FAF7F2;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-cinzel;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-secondary dark:bg-primary text-primary dark:text-secondary font-bold py-3 px-8 rounded-[20px] transition-all transform hover:-translate-y-1 shadow-btn;
+    @apply
+      font-cinzel font-semibold tracking-wider uppercase text-sm
+      bg-primary text-white
+      dark:bg-primary dark:text-[#18120E]
+      py-4 px-10 rounded-sm
+      border border-primary
+      transition-all duration-300
+      hover:bg-transparent hover:text-primary
+      dark:hover:bg-transparent dark:hover:text-primary;
   }
 
-
-  .section-content {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-14 py-12 md:py-40 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden;
+  .btn-outline {
+    @apply
+      font-cinzel font-semibold tracking-wider uppercase text-sm
+      bg-transparent text-primary
+      border border-primary
+      py-4 px-10 rounded-sm
+      transition-all duration-300
+      hover:bg-primary hover:text-white
+      dark:hover:text-[#18120E];
   }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+
+  .gold-divider {
+    @apply w-16 h-[2px] bg-primary;
+  }
+
+  .gold-divider-center {
+    @apply w-16 h-[2px] bg-primary mx-auto;
+  }
+
+  .grain-overlay {
+    position: relative;
+  }
+
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EDE4;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #18120E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B8956A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #96754A;
 }

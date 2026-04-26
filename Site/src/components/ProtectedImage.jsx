@@ -1,27 +1,18 @@
 import React from 'react';
 
-const ProtectedImage = ({ src, alt, className = "" }) => {
-    const handleContextMenu = (e) => {
-        e.preventDefault();
-    };
-
-    const handleDragStart = (e) => {
-        e.preventDefault();
-    };
-
+const ProtectedImage = ({ src, alt, className = "", imgClassName = "" }) => {
     return (
-        <div className={`relative inline-block select-none ${className}`} onContextMenu={handleContextMenu}>
+        <div
+            className={`relative select-none ${className}`}
+            onContextMenu={(e) => e.preventDefault()}
+        >
             <img
                 src={src}
                 alt={alt}
-                className="w-full h-auto pointer-events-none"
-                onDragStart={handleDragStart}
+                className={`pointer-events-none ${imgClassName}`}
+                draggable={false}
             />
-            {/* Invisible overlay */}
-            <div
-                className="absolute inset-0 z-10"
-                style={{ backgroundColor: 'transparent' }}
-            ></div>
+            <div className="absolute inset-0 z-10" />
         </div>
     );
 };

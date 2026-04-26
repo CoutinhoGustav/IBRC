@@ -3,11 +3,19 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const [isDark, setIsDark] = useState(() => {
         const saved = localStorage.getItem('theme');
         return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
     });
     const location = useLocation();
+    const isHome = location.pathname === '/';
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 60);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         if (isDark) {
@@ -20,83 +28,97 @@ const Navbar = () => {
     }, [isDark]);
 
     const navLinks = [
-        { name: 'Home', path: '/', delay: 'animate-[navbar_0.5s_ease_forwards_1s]' },
-        { name: 'Programações', path: '/programacoes', delay: 'animate-[navbar_0.5s_ease_forwards_1.5s]' },
-        { name: 'Quem Somos', path: '/quem-somos', delay: 'animate-[navbar_0.5s_ease_forwards_2s]' },
-        { name: 'Contato', path: '/contato', delay: 'animate-[navbar_0.5s_ease_forwards_2.5s]' },
+        { name: 'Home', path: '/' },
+        { name: 'Programacoes', path: '/programacoes' },
+        { name: 'Quem Somos', path: '/quem-somos' },
+        { name: 'Contato', path: '/contato' },
     ];
 
     const isActive = (path) => location.pathname === path;
 
+    const navBg = scrolled || !isHome
+        ? 'bg-cream/95 dark:bg-[#18120E]/95 backdrop-blur-md shadow-sm'
+        : 'bg-transparent';
+
+    const textColor = scrolled || !isHome
+        ? 'text-charcoal dark:text-[#E8DFD4]'
+        : 'text-white';
+
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-secondary transition-colors duration-300 shadow-md">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${navBg}`}>
+            <div className="section-container">
+                <div className="flex justify-between items-center h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex-shrink-0 flex items-center opacity-0 animate-[navbar_1s_ease_forwards_1s]">
-                        <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                            IBRC<span className="text-primary"></span>
+                    <Link to="/" className="flex items-center gap-2 group">
+                        <span className={`font-cinzel text-2xl font-bold tracking-[0.15em] transition-colors duration-500 ${textColor}`}>
+                            IBRC
                         </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary group-hover:scale-150 transition-transform duration-300" />
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden md:flex items-center gap-10">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`opacity-0 ${link.delay} transition-all font-medium border-b-2 border-transparent hover:border-primary ${isActive(link.path)
-                                    ? 'text-primary border-primary'
-                                    : 'text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary'
-                                    }`}
+                                className={`font-outfit text-sm font-medium tracking-[0.1em] uppercase transition-all duration-300 relative py-1 ${
+                                    isActive(link.path)
+                                        ? 'text-primary'
+                                        : `${textColor} hover:text-primary`
+                                }`}
                             >
                                 {link.name}
+                                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-primary transition-all duration-300 ${
+                                    isActive(link.path) ? 'w-full' : 'w-0'
+                                }`} />
                             </Link>
                         ))}
 
                         {/* Theme Toggle */}
                         <button
                             onClick={() => setIsDark(!isDark)}
-                            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors opacity-0 animate-navbar"
-                            aria-label="Toggle theme"
+                            className={`p-2 rounded-full transition-all duration-300 hover:bg-primary/10 ${textColor}`}
+                            aria-label="Alternar tema"
                         >
                             {isDark ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
                                 </svg>
                             ) : (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                                 </svg>
                             )}
                         </button>
                     </div>
 
-                    {/* Mobile menu button */}
-                    <div className="md:hidden flex items-center space-x-4">
+                    {/* Mobile controls */}
+                    <div className="md:hidden flex items-center gap-3">
                         <button
                             onClick={() => setIsDark(!isDark)}
-                            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            className={`p-2 rounded-full transition-colors ${textColor}`}
                         >
                             {isDark ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
                                 </svg>
                             ) : (
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                                 </svg>
                             )}
                         </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none animate-navbar"
+                            className={`p-2 transition-colors ${textColor}`}
+                            aria-label="Menu"
                         >
-                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                                 {isOpen ? (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 ) : (
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
                                 )}
                             </svg>
                         </button>
@@ -106,21 +128,23 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-16 left-0 w-full bg-white/80 dark:bg-secondary/80 backdrop-blur-xl border-y-2 border-[#C5A57D] shadow-xl transition-all duration-300 ease-in-out origin-top ${isOpen
-                    ? 'opacity-100 translate-y-0 visible'
-                    : 'opacity-0 -translate-y-2 invisible'
-                    }`}
+                className={`md:hidden absolute top-20 left-0 w-full bg-cream/98 dark:bg-[#18120E]/98 backdrop-blur-xl border-t border-primary/20 transition-all duration-400 origin-top ${
+                    isOpen
+                        ? 'opacity-100 translate-y-0 visible'
+                        : 'opacity-0 -translate-y-4 invisible'
+                }`}
             >
-                <div className="px-4 py-6 space-y-3">
+                <div className="section-container py-8 space-y-1">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
                             to={link.path}
                             onClick={() => setIsOpen(false)}
-                            className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${isActive(link.path)
-                                ? 'text-[#C5A57D] bg-[#C5A57D]/10'
-                                : 'text-gray-700 dark:text-gray-200 hover:text-[#C5A57D] hover:bg-[#C5A57D]/10 hover:pl-6'
-                                }`}
+                            className={`block py-3 px-4 font-cinzel text-sm tracking-[0.15em] uppercase transition-all duration-300 border-l-2 ${
+                                isActive(link.path)
+                                    ? 'text-primary border-primary bg-primary/5'
+                                    : 'text-charcoal dark:text-[#E8DFD4] border-transparent hover:border-primary/50 hover:text-primary hover:pl-6'
+                            }`}
                         >
                             {link.name}
                         </Link>
