@@ -23,12 +23,12 @@ const Footer = () => {
                     {/* Links */}
                     <div>
                         <h4 className="font-cinzel text-xs tracking-[0.2em] uppercase text-primary mb-6">
-                            Navegacao
+                            Navegação
                         </h4>
                         <div className="space-y-3">
                             {[
                                 { name: 'Home', path: '/' },
-                                { name: 'Programacoes', path: '/programacoes' },
+                                { name: 'Programações', path: '/programacoes' },
                                 { name: 'Quem Somos', path: '/quem-somos' },
                                 { name: 'Contato', path: '/contato' },
                             ].map((link) => (
@@ -49,9 +49,9 @@ const Footer = () => {
                             Nossos Encontros
                         </h4>
                         <div className="space-y-2 text-sm text-white/60">
-                            <p>Quartas-feiras as 20h</p>
-                            <p>Sextas-feiras as 19h30</p>
-                            <p>Domingos as 9h30 e 19h</p>
+                            <p>Quartas-feiras às 20h</p>
+                            <p>Sextas-feiras às 19h30</p>
+                            <p>Domingos às 9h30 e 19h</p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const Footer = () => {
                 {/* Bottom */}
                 <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-xs text-white/40 tracking-wide">
-                        &copy; {new Date().getFullYear()} Igreja Batista Regular do Calvario. Todos os direitos reservados.
+                        &copy; {new Date().getFullYear()} Igreja Batista Regular do Calvário. Todos os direitos reservados.
                     </p>
                     <div className="flex items-center gap-1.5">
                         <span className="w-1 h-1 rounded-full bg-primary/60" />
