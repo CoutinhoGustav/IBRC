@@ -26,11 +26,10 @@ const Home = () => {
                     {slides.map((slide, index) => (
                         <div
                             key={index}
-                            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
-                                index === currentSlide
+                            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${index === currentSlide
                                     ? 'opacity-100 scale-100'
                                     : 'opacity-0 scale-110'
-                            }`}
+                                }`}
                         >
                             <img
                                 src={slide.src}
@@ -56,18 +55,18 @@ const Home = () => {
                         Sejam Bem-Vindos
                     </h1>
                     <p className="font-cinzel text-primary text-lg sm:text-xl md:text-2xl tracking-[0.2em] uppercase mb-8 opacity-0 animate-fade-up-delay-1">
-                        Igreja Batista Regular do Calvario
+                        Igreja Batista Regular do Calvário
                     </p>
                     <p className="font-outfit text-white/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-12 opacity-0 animate-fade-up-delay-2">
-                        Uma familia da fe comprometida com a sa doutrina, o ensino expositivo
-                        das Escrituras e o fortalecimento mutuo em amor desde 1984.
+                        Uma família da fé comprometida com a sã doutrina, o ensino expositivo
+                        das Escrituras e o fortalecimento mútuo em amor desde 1984.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-up-delay-3">
                         <Link to="/quem-somos" className="btn-primary">
-                            Conheca Nossa Historia
+                            Conheça Nossa História
                         </Link>
                         <Link to="/programacoes" className="btn-outline border-white/40 text-white hover:bg-white hover:text-charcoal">
-                            Nossas Programacoes
+                            Nossas Programações
                         </Link>
                     </div>
                 </div>
@@ -79,11 +78,10 @@ const Home = () => {
                             key={index}
                             onClick={() => setCurrentSlide(index)}
                             aria-label={`Slide ${index + 1}`}
-                            className={`h-[2px] rounded-full transition-all duration-700 ${
-                                index === currentSlide
+                            className={`h-[2px] rounded-full transition-all duration-700 ${index === currentSlide
                                     ? 'bg-primary w-12'
                                     : 'bg-white/30 w-6 hover:bg-white/60'
-                            }`}
+                                }`}
                         />
                     ))}
                 </div>
@@ -102,21 +100,21 @@ const Home = () => {
                     <div className="max-w-3xl mx-auto text-center">
                         <div className="gold-divider-center mb-8" />
                         <h2 className="text-3xl md:text-4xl font-semibold mb-8 leading-snug text-balance">
-                            Uma comunidade de fe e{' '}
-                            <span className="text-primary">esperanca</span>
+                            Uma comunidade de fé e{' '}
+                            <span className="text-primary">esperança</span>
                         </h2>
                         <p className="text-warm-gray dark:text-[#9B8E82] text-lg leading-relaxed mb-12">
-                            Somos a Igreja Batista Regular do Calvario do Distrito Federal, localizada em Ceilandia.
-                            Desde 1984, temos sido um lugar de acolhimento, ensino biblico e comunhao para todas as idades.
+                            Somos a Igreja Batista Regular do Calvário do Distrito Federal, localizada em Ceilândia.
+                            Desde 1984, temos sido um lugar de acolhimento, ensino bíblico e comunhão para todas as idades.
                         </p>
 
                         {/* Schedule Cards */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                             {[
-                                { day: 'Quarta', time: '20h', label: 'Culto de Oracao' },
+                                { day: 'Quarta', time: '20h', label: 'Culto de Oração' },
                                 { day: 'Sexta', time: '19h30', label: 'Mocidade' },
-                                { day: 'Domingo', time: '9h30', label: 'Escola Biblica' },
-                                { day: 'Domingo', time: '19h', label: 'Culto Evangelistico' },
+                                { day: 'Domingo', time: '9h30', label: 'Escola Bíblica' },
+                                { day: 'Domingo', time: '19h', label: 'Culto Evangelístico' },
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
@@ -148,7 +146,7 @@ const Home = () => {
                         Venha nos visitar
                     </p>
                     <h2 className="font-cinzel text-3xl md:text-5xl font-semibold text-white mb-8 leading-snug text-balance">
-                        Estamos de bracos abertos para receber voce e sua familia
+                        Estamos de braços abertos para receber você e sua família
                     </h2>
                     <div className="gold-divider-center mb-10" />
                     <Link to="/contato" className="btn-primary">

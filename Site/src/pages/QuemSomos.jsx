@@ -12,17 +12,17 @@ const QuemSomos = () => {
     const beliefs = [
         {
             title: "Na Biblia",
-            text: "Cremos que a Biblia e a Palavra de Deus, inspirada, inerrante e a unica regra infalivel de fe e pratica para todos os cristaos.",
-            verse: "2 Timoteo 3:16",
+            text: "Cremos que a Bíblia é a Palavra de Deus, inspirada, inerrante e a única regra infalível de fé e prática para todos os cristãos.",
+            verse: "2 Timóteo 3:16",
         },
         {
             title: "Em Jesus Cristo",
-            text: "Cremos que Jesus Cristo e o Filho de Deus, que morreu por nossos pecados e ressuscitou para nossa justificacao e salvacao de todo aquele que cre.",
+            text: "Cremos que Jesus Cristo é o Filho de Deus, que morreu por nossos pecados e ressuscitou para nossa justificação e salvação de todo aquele que crê.",
             verse: "Romanos 10:9",
         },
         {
             title: "Na Igreja",
-            text: "Cremos que a Igreja e o corpo de Cristo atuando no mundo, com a missao de fazer discipulos em todas as nacoes e testemunhar o Seu amor.",
+            text: "Cremos que a Igreja é o corpo de Cristo atuando no mundo, com a missão de fazer discípulos em todas as nações e testemunhar o Seu amor.",
             verse: "Mateus 28:19",
         },
     ];
@@ -38,10 +38,10 @@ const QuemSomos = () => {
                     <div className="gold-divider mb-6 opacity-0 animate-fade-up" />
                     <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4 opacity-0 animate-fade-up-delay-1">
                         Nossa{' '}
-                        <span className="text-primary">Historia</span>
+                        <span className="text-primary">História</span>
                     </h1>
                     <p className="text-white/60 text-lg max-w-xl opacity-0 animate-fade-up-delay-2">
-                        Mais de 40 anos de fe, ensino e comunhao em Ceilandia.
+                        Mais de 40 anos de fé, ensino e comunhão em Ceilândia.
                     </p>
                 </div>
             </section>
@@ -65,30 +65,30 @@ const QuemSomos = () => {
                                 <div className="gold-divider mb-6" />
                                 <h2 className="text-2xl md:text-3xl font-semibold mb-6">
                                     Uma caminhada de{' '}
-                                    <span className="text-primary">fe</span>
+                                    <span className="text-primary">fé</span>
                                 </h2>
                             </div>
 
                             <p className="text-warm-gray dark:text-[#9B8E82] text-lg leading-relaxed">
-                                A Igreja Batista Regular do Calvario do Distrito Federal tem raizes
-                                profundas na comunidade de Ceilandia. Nossa caminhada comecou em
-                                meados de 1984, fruto da dedicacao e fe do irmao Juraci e sua familia.
+                                A Igreja Batista Regular do Calvário do Distrito Federal tem raízes
+                                profundas na comunidade de Ceilândia. Nossa caminhada começou em
+                                meados de 1984, fruto da dedicação e fé do irmão Juraci e sua família.
                             </p>
 
                             <p className="text-warm-gray dark:text-[#9B8E82] leading-relaxed">
-                                As primeiras reunioes, simples e repletas de proposito, aconteciam
-                                nas salas das casas da vizinhanca, unindo pessoas em oracao e louvor.
+                                As primeiras reuniões, simples e repletas de propósito, aconteciam
+                                nas salas das casas da vizinhanca, unindo pessoas em oração e louvor.
                             </p>
 
                             {/* Pull Quote */}
                             <blockquote className="relative p-8 bg-white dark:bg-[#241C16] border-l-[3px] border-primary rounded-sm shadow-card">
                                 <p className="font-cinzel text-lg md:text-xl font-medium leading-relaxed text-secondary dark:text-primary italic">
-                                    "No ano de 1985, recebemos a bencao de um terreno para fundarmos
+                                    "No ano de 1985, recebemos a benção de um terreno para fundarmos
                                     nossa sede academica e espiritual."
                                 </p>
                                 <p className="mt-4 text-sm text-warm-gray dark:text-[#9B8E82]">
-                                    Desde entao, este local tornou-se um farol de esperanca e ensino
-                                    biblico, realizando atividades para criancas, jovens e adultos.
+                                    Desde então, este local tornou-se um farol de esperança e ensino
+                                    bíblico, realizando atividades para crianças, jovens e adultos.
                                 </p>
                             </blockquote>
                         </div>

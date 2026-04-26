@@ -5,10 +5,10 @@ const Programacoes = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const schedules = [
-        { title: "Culto de Oracao", day: "Quarta-Feira", time: "20H", description: "Momento de comunhao em oracao, buscando a presenca de Deus juntos." },
-        { title: "Mocidade", day: "Sexta-Feira", time: "18H", description: "Encontro dinamico para jovens com louvor, estudo e comunhao." },
-        { title: "Escola Biblica Dominical", day: "Domingo", time: "9H30", description: "Estudo sistematico das Escrituras para todas as faixas etarias." },
-        { title: "Culto Evangelistico", day: "Domingo", time: "19H", description: "Celebracao e proclamacao da Palavra com louvor e adoracao." },
+        { title: "Culto de Oração", day: "Quarta-Feira", time: "20H", description: "Momento de comunhão em oração, buscando a presença de Deus juntos." },
+        { title: "Mocidade", day: "Sexta-Feira", time: "18H", description: "Encontro dinâmico para jovens com louvor, estudo e comunhão." },
+        { title: "Escola Bíblica Dominical", day: "Domingo", time: "9H30", description: "Estudo sistemático das Escrituras para todas as faixas etárias." },
+        { title: "Culto Evangelístico", day: "Domingo", time: "19H", description: "Celebração e proclamação da Palavra com louvor e adoração." },
     ];
 
     const slides = [
@@ -20,7 +20,7 @@ const Programacoes = () => {
 
     const additionalSchedules = [
         { title: "Aulas de Flauta", day: "Domingo", time: "17H" },
-        { title: "Uniao Masculina e Feminina", day: "Ultimo Sabado do Mes", time: "19H" },
+        { title: "União Masculina e Feminina", day: "Ultimo Sabado do Mes", time: "19H" },
     ];
 
     return (
@@ -34,7 +34,7 @@ const Programacoes = () => {
                     <div className="gold-divider mb-6 opacity-0 animate-fade-up" />
                     <h1 className="text-4xl md:text-6xl font-semibold text-white mb-4 opacity-0 animate-fade-up-delay-1">
                         Nossas{' '}
-                        <span className="text-primary">Programacoes</span>
+                        <span className="text-primary">Programações</span>
                     </h1>
                     <p className="text-white/60 text-lg max-w-xl opacity-0 animate-fade-up-delay-2">
                         Acompanhe nossas atividades semanais e participe conosco.

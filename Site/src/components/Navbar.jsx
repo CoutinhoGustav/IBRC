@@ -29,7 +29,7 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Programacoes', path: '/programacoes' },
+        { name: 'Programações', path: '/programacoes' },
         { name: 'Quem Somos', path: '/quem-somos' },
         { name: 'Contato', path: '/contato' },
     ];
@@ -62,16 +62,14 @@ const Navbar = () => {
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`font-outfit text-sm font-medium tracking-[0.1em] uppercase transition-all duration-300 relative py-1 ${
-                                    isActive(link.path)
+                                className={`font-outfit text-sm font-medium tracking-[0.1em] uppercase transition-all duration-300 relative py-1 ${isActive(link.path)
                                         ? 'text-primary'
                                         : `${textColor} hover:text-primary`
-                                }`}
+                                    }`}
                             >
                                 {link.name}
-                                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-primary transition-all duration-300 ${
-                                    isActive(link.path) ? 'w-full' : 'w-0'
-                                }`} />
+                                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-primary transition-all duration-300 ${isActive(link.path) ? 'w-full' : 'w-0'
+                                    }`} />
                             </Link>
                         ))}
 
@@ -128,11 +126,10 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute top-20 left-0 w-full bg-cream/98 dark:bg-[#18120E]/98 backdrop-blur-xl border-t border-primary/20 transition-all duration-400 origin-top ${
-                    isOpen
+                className={`md:hidden absolute top-20 left-0 w-full bg-cream/98 dark:bg-[#18120E]/98 backdrop-blur-xl border-t border-primary/20 transition-all duration-400 origin-top ${isOpen
                         ? 'opacity-100 translate-y-0 visible'
                         : 'opacity-0 -translate-y-4 invisible'
-                }`}
+                    }`}
             >
                 <div className="section-container py-8 space-y-1">
                     {navLinks.map((link) => (
@@ -140,11 +137,10 @@ const Navbar = () => {
                             key={link.path}
                             to={link.path}
                             onClick={() => setIsOpen(false)}
-                            className={`block py-3 px-4 font-cinzel text-sm tracking-[0.15em] uppercase transition-all duration-300 border-l-2 ${
-                                isActive(link.path)
+                            className={`block py-3 px-4 font-cinzel text-sm tracking-[0.15em] uppercase transition-all duration-300 border-l-2 ${isActive(link.path)
                                     ? 'text-primary border-primary bg-primary/5'
                                     : 'text-charcoal dark:text-[#E8DFD4] border-transparent hover:border-primary/50 hover:text-primary hover:pl-6'
-                            }`}
+                                }`}
                         >
                             {link.name}
                         </Link>

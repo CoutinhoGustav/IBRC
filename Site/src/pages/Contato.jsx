@@ -57,7 +57,7 @@ const Contato = () => {
                         Fale <span className="text-primary">Conosco</span>
                     </h1>
                     <p className="text-white/60 text-lg max-w-xl mx-auto opacity-0 animate-fade-up-delay-2">
-                        Conecte-se conosco atraves das nossas redes sociais.
+                        Conecte-se conosco através das nossas redes sociais.
                     </p>
                 </div>
             </section>
@@ -111,8 +111,8 @@ const Contato = () => {
                             Venha nos visitar
                         </p>
                         <p className="text-warm-gray dark:text-[#9B8E82] leading-relaxed">
-                            Estamos localizados em Ceilandia, Distrito Federal.
-                            Sera uma alegria recebe-lo em nossos cultos e atividades.
+                            Estamos localizados em Ceilândia, Distrito Federal.
+                            Será uma alegria recebê-lo em nossos cultos e atividades.
                         </p>
                     </div>
                 </div>
