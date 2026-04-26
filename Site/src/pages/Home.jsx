@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     const slides = [
         { src: "/img/hero-img.png", alt: "IBRC Vista Exterior" },
-        { src: "/img/slide_1.png", alt: "Nossa Congregacao" },
+        { src: "/img/IMG-20220807-WA0000.jpg", alt: "Nossa Congregacao" },
         { src: "/img/slide 4.jpeg", alt: "Comunidade IBRC" },
     ];
 
@@ -27,8 +27,8 @@ const Home = () => {
                         <div
                             key={index}
                             className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${index === currentSlide
-                                    ? 'opacity-100 scale-100'
-                                    : 'opacity-0 scale-110'
+                                ? 'opacity-100 scale-100'
+                                : 'opacity-0 scale-110'
                                 }`}
                         >
                             <img
@@ -79,8 +79,8 @@ const Home = () => {
                             onClick={() => setCurrentSlide(index)}
                             aria-label={`Slide ${index + 1}`}
                             className={`h-[2px] rounded-full transition-all duration-700 ${index === currentSlide
-                                    ? 'bg-primary w-12'
-                                    : 'bg-white/30 w-6 hover:bg-white/60'
+                                ? 'bg-primary w-12'
+                                : 'bg-white/30 w-6 hover:bg-white/60'
                                 }`}
                         />
                     ))}
