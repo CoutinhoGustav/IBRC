@@ -61,39 +61,13 @@ Site/
 
 ---
 
-##   Instalação e Configuração
-
-###  Clonar o repositório
-```bash
-git clone https://github.com/CoutinhoGustav/pc3
-```
-
-###  Acessar o frontend
-```bash
-cd frontend/projeto-react
-```
-
-###  Instalar dependências
-```bash
-npm install
-npm install react-router-dom
-```
-
-### Executar o projeto
-```bash
-npm start
-```
-
-
----
-
-##  Licença
-Este projeto está sob a licença **MIT**.  
-
----
-
 ## Link para o site
 https://ibrcdf.vercel.app/
 
 ---
 * Projeto desenvolvido por **Davi e Gustavo**
+
+---
+
+##  Licença
+Este projeto está sob a licença **MIT**.  
